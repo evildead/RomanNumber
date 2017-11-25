@@ -18,6 +18,16 @@ describe('RomanNumber', () => {
             let romanNumber = RomanNumber(1);
             assert.isObject(romanNumber);
         });
+
+        it('The object should contain method toInt', () => {
+            let romanNumber = RomanNumber(1);
+            assert.isFunction(romanNumber.toInt);
+        });
+        
+        it('The object should contain method toString', () => {
+            let romanNumber = RomanNumber(1);
+            assert.isFunction(romanNumber.toString);
+        });
     });
 
 });

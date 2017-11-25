@@ -17,4 +17,11 @@ const romanNumber = function RomanNumber(val) {
     }
 };
 
+/**
+ * toInt
+ */
+romanNumber.prototype.toInt = function toInt() {
+    return 1;
+};
+
 module.exports = romanNumber;
