@@ -55,6 +55,10 @@ romanNumber.intToRoman = function intToRoman(val) {
     let ones = intVal % 10;
     intVal = parseInt(intVal / 10);
     let tens = intVal % 10;
+    intVal = parseInt(intVal / 10);
+    let hundreds = intVal % 10;
+    intVal = parseInt(intVal / 10);
+    let thousands = intVal % 10;
 
     switch(ones) {
     case 1:
@@ -115,6 +119,52 @@ romanNumber.intToRoman = function intToRoman(val) {
         break;
     case 9:
         finalStr = 'XC' + finalStr;
+        break;
+    default:
+        break;
+    }
+
+    switch(hundreds) {
+    case 1:
+        finalStr = 'C' + finalStr;
+        break;
+    case 2:
+        finalStr = 'CC' + finalStr;
+        break;
+    case 3:
+        finalStr = 'CCC' + finalStr;
+        break;
+    case 4:
+        finalStr = 'CD' + finalStr;
+        break;
+    case 5:
+        finalStr = 'D' + finalStr;
+        break;
+    case 6:
+        finalStr = 'DC' + finalStr;
+        break;
+    case 7:
+        finalStr = 'DCC' + finalStr;
+        break;
+    case 8:
+        finalStr = 'DCCC' + finalStr;
+        break;
+    case 9:
+        finalStr = 'CM' + finalStr;
+        break;
+    default:
+        break;
+    }
+
+    switch(thousands) {
+    case 1:
+        finalStr = 'M' + finalStr;
+        break;
+    case 2:
+        finalStr = 'MM' + finalStr;
+        break;
+    case 3:
+        finalStr = 'MMM' + finalStr;
         break;
     default:
         break;

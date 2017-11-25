@@ -104,6 +104,36 @@ describe('RomanNumber', () => {
             romannum.toString().should.equal('XLIX');
             romannum.toInt().should.equal(49);
         });
+
+        it('The arabic number 1968 should be equal to the Roman number "MCMLXVIII"', () => {
+            let romannum = RomanNumber(1968);
+            romannum.toString().should.equal('MCMLXVIII');
+            romannum.toInt().should.equal(1968);
+        });
+
+        it('The arabic number "1473" should be equal to the Roman number "MCDLXXIII"', () => {
+            let romannum = RomanNumber("1473");
+            romannum.toString().should.equal('MCDLXXIII');
+            romannum.toInt().should.equal(1473);
+        });
+
+	    it('The arabic number 2999 should be equal to the Roman number "MMCMXCIX"', () => {
+            let romannum = RomanNumber(2999);
+            romannum.toString().should.equal('MMCMXCIX');
+            romannum.toInt().should.equal(2999);
+        });
+
+        it('The arabic number 3000 should be equal to the Roman number "MMM"', () => {
+            let romannum = RomanNumber(3000);
+            romannum.toString().should.equal('MMM');
+            romannum.toInt().should.equal(3000);
+        });
+
+	    it('The arabic number 3999 should be equal to the Roman number "MMMCMXCIX"', () => {
+            let romannum = RomanNumber(3999);
+            romannum.toString().should.equal('MMMCMXCIX');
+            romannum.toInt().should.equal(3999);
+        });
     });
 
 });
