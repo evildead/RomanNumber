@@ -60,6 +60,14 @@ describe('RomanNumber', () => {
         it('The constructor invoked with "1473" should not return an exception', () => {
             expect(() => RomanNumber('1473')).to.not.throw();
         });
+
+        it('The constructor invoked with "IIII" should return an exception: invalid value', () => {
+            expect(() => RomanNumber('IIII')).to.throw(Error, /^invalid value$/);
+        });
+
+        it('The constructor invoked with "MMMMCMXCIX" should return an exception: invalid value', () => {
+            expect(() => RomanNumber('MMMMCMXCIX')).to.throw(Error, /^invalid value$/);
+        });
     });
 
     describe('Check values', () => {

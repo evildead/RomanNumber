@@ -160,12 +160,27 @@ romanNumber.romanToInt = function romanToInt(val) {
 
     let i = 0;
     let finalInt = 0;
+    let numConsecutives;
 
     // this loop is used to read the entire Roman string
     while(i < val.length) {
         let tmpPattern = '';
-        // this loop is used to build the next pattern
+        // this loop is used to build the next pattern and to check for more than 3 consecutive symbols 
         while(i < val.length) {
+            // check for more than 3 consecutive symbols ////////////
+            if((i > 0) && (val[i] == val[i-1])) {
+                if(numConsecutives == 3) {
+                    throw new Error('invalid value');
+                }
+                else {
+                    numConsecutives++;
+                }
+            }
+            else {
+                numConsecutives = 1;
+            }
+            /////////////////////////////////////////////////////////
+            
             if(tmpPattern.length == 0) {
                 tmpPattern += val[i++];
             }
