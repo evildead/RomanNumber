@@ -68,6 +68,22 @@ describe('RomanNumber', () => {
         it('The constructor invoked with "MMMMCMXCIX" should return an exception: invalid value', () => {
             expect(() => RomanNumber('MMMMCMXCIX')).to.throw(Error, /^invalid value$/);
         });
+
+        it('The constructor invoked with "MMMMDMXCIX" should return an exception: invalid value', () => {
+            expect(() => RomanNumber('MMMMDMXCIX')).to.throw(Error, /^invalid value$/);
+        });
+
+        it('The constructor invoked with "MMMDMXCIX" should return an exception: invalid value', () => {
+            expect(() => RomanNumber('MMMDMXCIX')).to.throw(Error, /^invalid value$/);
+        });
+
+        it('The constructor invoked with "MIM" should return an exception: invalid value', () => {
+            expect(() => RomanNumber('MIM')).to.throw(Error, /^invalid value$/);
+        });
+
+        it('The constructor invoked with "MDCVV" should return an exception: invalid value', () => {
+            expect(() => RomanNumber('MDCVV')).to.throw(Error, /^invalid value$/);
+        });
     });
 
     describe('Check values', () => {
@@ -125,7 +141,7 @@ describe('RomanNumber', () => {
             romannum.toInt().should.equal(1473);
         });
 
-	    it('The arabic number 2999 should be equal to the Roman number "MMCMXCIX"', () => {
+        it('The arabic number 2999 should be equal to the Roman number "MMCMXCIX"', () => {
             let romannum = RomanNumber(2999);
             romannum.toString().should.equal('MMCMXCIX');
             romannum.toInt().should.equal(2999);
@@ -137,7 +153,7 @@ describe('RomanNumber', () => {
             romannum.toInt().should.equal(3000);
         });
 
-	    it('The arabic number 3999 should be equal to the Roman number "MMMCMXCIX"', () => {
+        it('The arabic number 3999 should be equal to the Roman number "MMMCMXCIX"', () => {
             let romannum = RomanNumber(3999);
             romannum.toString().should.equal('MMMCMXCIX');
             romannum.toInt().should.equal(3999);
@@ -227,13 +243,13 @@ describe('RomanNumber', () => {
             romannum.toInt().should.equal(1482);
         });
 
-	    it('The Roman number "MCMLXXX" should be equal to the arabic number 1980', () => {
+        it('The Roman number "MCMLXXX" should be equal to the arabic number 1980', () => {
             let romannum = RomanNumber('MCMLXXX');
             romannum.toString().should.equal('MCMLXXX');
             romannum.toInt().should.equal(1980);
         });
 
-	    it('The Roman number "MMMCMXCIX" should be equal to the arabic number 3999', () => {
+        it('The Roman number "MMMCMXCIX" should be equal to the arabic number 3999', () => {
             let romannum = RomanNumber('MMMCMXCIX');
             romannum.toString().should.equal('MMMCMXCIX');
             romannum.toInt().should.equal(3999);

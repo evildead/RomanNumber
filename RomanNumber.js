@@ -149,6 +149,10 @@ romanNumber.checkOnlyRomanSymbols = function checkOnlyRomanSymbols(val) {
     return true;
 };
 
+/**
+ * Static method romanToInt
+ * @param {Roman String} val: must be a string composed of Roman symbols only
+ */
 romanNumber.romanToInt = function romanToInt(val) {
     let patternsArray = [
         ["I", 1],    ["II", 2],    ["III", 3],   ["IV", 4],   ["V", 5],   ["VI", 6],   ["VII", 7],   ["VIII", 8],   ["IX", 9],    // Ones
@@ -161,6 +165,8 @@ romanNumber.romanToInt = function romanToInt(val) {
     let i = 0;
     let finalInt = 0;
     let numConsecutives;
+    let lastPatternFound = '';
+    let lastPatternNumFound = 0;
 
     // this loop is used to read the entire Roman string
     while(i < val.length) {
@@ -180,7 +186,7 @@ romanNumber.romanToInt = function romanToInt(val) {
                 numConsecutives = 1;
             }
             /////////////////////////////////////////////////////////
-            
+
             if(tmpPattern.length == 0) {
                 tmpPattern += val[i++];
             }
@@ -197,7 +203,21 @@ romanNumber.romanToInt = function romanToInt(val) {
 
         if(tmpPattern.length > 0) {
             let tmpNum = patterns.get(tmpPattern);
-            finalInt += tmpNum;
+            if(typeof(tmpNum) !== 'undefined') {
+                if(lastPatternFound.length > 0) {
+                    // new pattern must belong to a lower category than the previous one
+                    // if a previous value found was 400, the following value must be from 1 to 99
+                    if(tmpNum.toString().length >= lastPatternNumFound.toString().length) {
+                        throw new Error('invalid value');
+                    }
+                }
+                lastPatternFound = tmpPattern;
+                lastPatternNumFound = tmpNum;
+                finalInt += tmpNum;
+            }
+            else {
+                throw new Error('invalid value');
+            }
         }
     }
 
