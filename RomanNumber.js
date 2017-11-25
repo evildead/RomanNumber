@@ -158,7 +158,33 @@ romanNumber.romanToInt = function romanToInt(val) {
     ];
     let patterns = new Map(patternsArray);
 
-    let finalInt = patterns.get(val);
+    let i = 0;
+    let finalInt = 0;
+
+    // this loop is used to read the entire Roman string
+    while(i < val.length) {
+        let tmpPattern = '';
+        // this loop is used to build the next pattern
+        while(i < val.length) {
+            if(tmpPattern.length == 0) {
+                tmpPattern += val[i++];
+            }
+            else {
+                let tmpPatternVal = patterns.get(tmpPattern + val[i]);
+                if(typeof(tmpPatternVal) !== 'undefined') {
+                    tmpPattern += val[i++];
+                }
+                else {
+                    break;
+                }
+            }
+        }
+
+        if(tmpPattern.length > 0) {
+            let tmpNum = patterns.get(tmpPattern);
+            finalInt += tmpNum;
+        }
+    }
 
     return finalInt;
 };
