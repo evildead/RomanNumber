@@ -62,4 +62,42 @@ describe('RomanNumber', () => {
         });
     });
 
+    describe('Check values', () => {
+        it('The arabic number 1 should be equal to the Roman number "I"', () => {
+            let romannum = RomanNumber(1);
+            romannum.toString().should.equal('I');
+            romannum.toInt().should.equal(1);
+        });
+
+        it('The arabic number "1" should be equal to the Roman number "I"', () => {
+            let romannum = RomanNumber('1');
+            romannum.toString().should.equal('I');
+            romannum.toInt().should.equal(1);
+        });
+
+        it('The arabic number 2 should be equal to the Roman number "II"', () => {
+            let romannum = RomanNumber(2);
+            romannum.toString().should.equal('II');
+            romannum.toInt().should.equal(2);
+        });
+
+        it('The arabic number 3 should be equal to the Roman number "III"', () => {
+            let romannum = RomanNumber(3);
+            romannum.toString().should.equal('III');
+            romannum.toInt().should.equal(3);
+        });
+
+        it('The arabic number 4 should be equal to the Roman number "IV"', () => {
+            let romannum = RomanNumber(4);
+            romannum.toString().should.equal('IV');
+            romannum.toInt().should.equal(4);
+        });
+
+        it('The arabic number 5 should be equal to the Roman number "V"', () => {
+            let romannum = RomanNumber(5);
+            romannum.toString().should.equal('V');
+            romannum.toInt().should.equal(5);
+        });
+    });
+
 });
