@@ -20,8 +20,11 @@ const romanNumber = function RomanNumber(val) {
         throw new Error('value required');
     }
 
-    if(Number.isInteger(val)) {
-        if((val < 1) || (val > 3999)) {
+    if( (Number.isInteger(val)) ||
+        ((typeof(val) === "string" || val instanceof String) && Number.isInteger(parseInt(val))) ) {
+    
+        let intVal = parseInt(val);
+        if((intVal < 1) || (intVal > 3999)) {
             throw new Error('invalid range');
         }
     }

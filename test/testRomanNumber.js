@@ -56,6 +56,10 @@ describe('RomanNumber', () => {
         it('The constructor invoked with "CD1X" should return an exception: invalid value', () => {
             expect(() => RomanNumber('CD1X')).to.throw(Error, /^invalid value$/);
         });
+
+        it('The constructor invoked with "1473" should not return an exception', () => {
+            expect(() => RomanNumber('1473')).to.not.throw();
+        });
     });
 
 });
