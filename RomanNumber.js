@@ -48,126 +48,85 @@ romanNumber.isValidInt = function isValidInt(val) {
     }
 };
 
+/**
+ * static method intToRoman
+ * @param {Integer} val: must be an integer between 1 and 3999 (even in the form '1' to '3999')
+ * 
+ * The patterns for ones, tens, hundreds and thousands are the same:
+ * only symbols change:
+ * 
+ *  Patterns:
+ * 
+ *              |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   |
+ *  Ones:       |   I   |   II  |  III  |   IV  |   V   |   VI  |  VII  |  VIII |   IX  |
+ * 
+ *              |   10  |   20  |   30  |   40  |   50  |   60  |   70  |   80  |   90  |
+ *  Tens:       |   X   |   XX  |  XXX  |   XL  |   L   |   LX  |  LXX  |  LXXX |   XC  |
+ * 
+ *              |  100  |  200  |  300  |  400  |  500  |  600  |  700  |  800  |  900  |
+ *  Hundreds:   |   C   |   CC  |  CCC  |   CD  |   D   |   DC  |  DCC  |  DCCC |   CM  |
+ * 
+ *              |  1000 |  2000 |  3000 |   -   |   -   |   -   |   -   |   -   |   -   |
+ *  Thousands:  |   M   |   MM  |  MMM  |   -   |   -   |   -   |   -   |   -   |   -   |
+ */
 romanNumber.intToRoman = function intToRoman(val) {
     let intVal = parseInt(val);
+    let onesSym       = ['I', 'V', 'X'];
+    let tensSym       = ['X', 'L', 'C'];
+    let hundredsSym   = ['C', 'D', 'M'];
+    let thousandsSym  = ['M', '-', '-'];
     let finalStr = '';
+    
+    // Retrieve units, tens, hundreds and thousands from val
+    for(let i = 0; i < 4; i++) {
+        let tmpSym;
+        let tmpVal;
+        if(i == 0) {        // ones
+            tmpSym = onesSym;
+        }
+        else if(i == 1) {   // tens
+            tmpSym = tensSym;
+        }
+        else if(i == 2) {   // hundreds
+            tmpSym = hundredsSym;
+        }
+        else {              // thousands
+            tmpSym = thousandsSym;
+        }
+        tmpVal = intVal % 10;
+        intVal = parseInt(intVal / 10);
 
-    let ones = intVal % 10;
-    intVal = parseInt(intVal / 10);
-    let tens = intVal % 10;
-    intVal = parseInt(intVal / 10);
-    let hundreds = intVal % 10;
-    intVal = parseInt(intVal / 10);
-    let thousands = intVal % 10;
-
-    switch(ones) {
-    case 1:
-        finalStr = 'I';
-        break;
-    case 2:
-        finalStr = 'II';
-        break;
-    case 3:
-        finalStr = 'III';
-        break;
-    case 4:
-        finalStr = 'IV';
-        break;
-    case 5:
-        finalStr = 'V';
-        break;
-    case 6:
-        finalStr = 'VI';
-        break;
-    case 7:
-        finalStr = 'VII';
-        break;
-    case 8:
-        finalStr = 'VIII';
-        break;
-    case 9:
-        finalStr = 'IX';
-        break;
-    default:
-        break;
-    }
-
-    switch(tens) {
-    case 1:
-        finalStr = 'X' + finalStr;
-        break;
-    case 2:
-        finalStr = 'XX' + finalStr;
-        break;
-    case 3:
-        finalStr = 'XXX' + finalStr;
-        break;
-    case 4:
-        finalStr = 'XL' + finalStr;
-        break;
-    case 5:
-        finalStr = 'L' + finalStr;
-        break;
-    case 6:
-        finalStr = 'LX' + finalStr;
-        break;
-    case 7:
-        finalStr = 'LXX' + finalStr;
-        break;
-    case 8:
-        finalStr = 'LXXX' + finalStr;
-        break;
-    case 9:
-        finalStr = 'XC' + finalStr;
-        break;
-    default:
-        break;
-    }
-
-    switch(hundreds) {
-    case 1:
-        finalStr = 'C' + finalStr;
-        break;
-    case 2:
-        finalStr = 'CC' + finalStr;
-        break;
-    case 3:
-        finalStr = 'CCC' + finalStr;
-        break;
-    case 4:
-        finalStr = 'CD' + finalStr;
-        break;
-    case 5:
-        finalStr = 'D' + finalStr;
-        break;
-    case 6:
-        finalStr = 'DC' + finalStr;
-        break;
-    case 7:
-        finalStr = 'DCC' + finalStr;
-        break;
-    case 8:
-        finalStr = 'DCCC' + finalStr;
-        break;
-    case 9:
-        finalStr = 'CM' + finalStr;
-        break;
-    default:
-        break;
-    }
-
-    switch(thousands) {
-    case 1:
-        finalStr = 'M' + finalStr;
-        break;
-    case 2:
-        finalStr = 'MM' + finalStr;
-        break;
-    case 3:
-        finalStr = 'MMM' + finalStr;
-        break;
-    default:
-        break;
+        switch(tmpVal) {
+        case 1:
+            finalStr = tmpSym[0] + finalStr;
+            break;
+        case 2:
+            finalStr = tmpSym[0] + tmpSym[0] + finalStr;
+            break;
+        case 3:
+            finalStr = tmpSym[0] + tmpSym[0] + tmpSym[0] + finalStr;
+            break;
+        case 4:
+            finalStr = tmpSym[0] + tmpSym[1] + finalStr;
+            break;
+        case 5:
+            finalStr = tmpSym[1] + finalStr;
+            break;
+        case 6:
+            finalStr = tmpSym[1] + tmpSym[0] + finalStr;
+            break;
+        case 7:
+            finalStr = tmpSym[1] + tmpSym[0] + tmpSym[0] + finalStr;
+            break;
+        case 8:
+            finalStr = tmpSym[1] + tmpSym[0] + tmpSym[0] + tmpSym[0] + finalStr;
+            break;
+        case 9:
+            finalStr = tmpSym[0] + tmpSym[2] + finalStr;
+            break;
+        default:
+            break;
+        }
     }
 
     return finalStr;
