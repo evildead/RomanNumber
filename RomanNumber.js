@@ -25,7 +25,16 @@ const romanNumber = function RomanNumber(val) {
         this.strVal = RomanNumber.intToRoman(this.intVal);
     }
     else if(RomanNumber.checkOnlyRomanSymbols(val)) {
+        this.strVal = val.toUpperCase();
         
+        let patterns = new Map();
+        patterns.set('I', 1);
+        patterns.set('II', 2);
+        patterns.set('III', 3);
+        patterns.set('IV', 4);
+        patterns.set('V', 5);
+        
+        this.intVal = patterns.get(this.strVal);
     }
     else {
         throw new Error('invalid value');
