@@ -26,15 +26,7 @@ const romanNumber = function RomanNumber(val) {
     }
     else if(RomanNumber.checkOnlyRomanSymbols(val)) {
         this.strVal = val.toUpperCase();
-        
-        let patterns = new Map();
-        patterns.set('I', 1);
-        patterns.set('II', 2);
-        patterns.set('III', 3);
-        patterns.set('IV', 4);
-        patterns.set('V', 5);
-        
-        this.intVal = patterns.get(this.strVal);
+        this.intVal = RomanNumber.romanToInt(this.strVal);
     }
     else {
         throw new Error('invalid value');
@@ -155,6 +147,20 @@ romanNumber.checkOnlyRomanSymbols = function checkOnlyRomanSymbols(val) {
     }
 
     return true;
+};
+
+romanNumber.romanToInt = function romanToInt(val) {
+    let patternsArray = [
+        ["I", 1],    ["II", 2],    ["III", 3],   ["IV", 4],   ["V", 5],   ["VI", 6],   ["VII", 7],   ["VIII", 8],   ["IX", 9],    // Ones
+        ["X", 10],   ["XX", 20],   ["XXX", 30],  ["XL", 40],  ["L", 50],  ["LX", 60],  ["LXX", 70],  ["LXXX", 80],  ["XC", 90],   // Tens
+        ["C", 100],  ["CC", 200],  ["CCC", 300], ["CD", 400], ["D", 500], ["DC", 600], ["DCC", 700], ["DCCC", 800], ["CM", 900],  // Hundreds
+        ["M", 1000], ["MM", 2000], ["MMM", 3000]                                                                                  // Thousands
+    ];
+    let patterns = new Map(patternsArray);
+
+    let finalInt = patterns.get(val);
+
+    return finalInt;
 };
 
 /**

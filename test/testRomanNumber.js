@@ -164,6 +164,48 @@ describe('RomanNumber', () => {
             romannum.toString().should.equal('V');
             romannum.toInt().should.equal(5);
         });
+
+        it('The Roman number "XXX" should be equal to the arabic number 30', () => {
+            let romannum = RomanNumber('XXX');
+            romannum.toString().should.equal('XXX');
+            romannum.toInt().should.equal(30);
+        });
+
+        it('The Roman number "XL" should be equal to the arabic number 40', () => {
+            let romannum = RomanNumber('XL');
+            romannum.toString().should.equal('XL');
+            romannum.toInt().should.equal(40);
+        });
+
+        it('The Roman number "XC" should be equal to the arabic number 90', () => {
+            let romannum = RomanNumber('XC');
+            romannum.toString().should.equal('XC');
+            romannum.toInt().should.equal(90);
+        });
+
+        it('The Roman number "CC" should be equal to the arabic number 200', () => {
+            let romannum = RomanNumber('CC');
+            romannum.toString().should.equal('CC');
+            romannum.toInt().should.equal(200);
+        });
+
+        it('The Roman number "CD" should be equal to the arabic number 400', () => {
+            let romannum = RomanNumber('CD');
+            romannum.toString().should.equal('CD');
+            romannum.toInt().should.equal(400);
+        });
+
+        it('The Roman number "DCCC" should be equal to the arabic number 800', () => {
+            let romannum = RomanNumber('DCCC');
+            romannum.toString().should.equal('DCCC');
+            romannum.toInt().should.equal(800);
+        });
+
+        it('The Roman number "MMM" should be equal to the arabic number 3000', () => {
+            let romannum = RomanNumber('MMM');
+            romannum.toString().should.equal('MMM');
+            romannum.toInt().should.equal(3000);
+        });
     });
 
 });
