@@ -20,8 +20,22 @@ const romanNumber = function RomanNumber(val) {
         throw new Error('value required');
     }
 
-    if((val < 1) || (val > 3999)) {
-        throw new Error('invalid range');
+    if(Number.isInteger(val)) {
+        if((val < 1) || (val > 3999)) {
+            throw new Error('invalid range');
+        }
+    }
+    else if((typeof(val) === "string") || (val instanceof String)) {
+        let romanSymbols = ['M', 'D', 'C', 'L', 'X', 'V', 'I'];
+        
+        for(let i = 0; i < val.length; i++) {
+            if(romanSymbols.indexOf(val[i].toUpperCase()) < 0) {
+                throw new Error('invalid value');
+            }
+        }
+    }
+    else {
+        throw new Error('invalid value');
     }
 };
 

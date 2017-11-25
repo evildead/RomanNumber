@@ -48,6 +48,14 @@ describe('RomanNumber', () => {
         it('The constructor invoked with 10000 should return an exception: invalid range', () => {
             expect(() => RomanNumber(10000)).to.throw(Error, /^invalid range$/);
         });
+
+        it('The constructor invoked with "error" should return an exception: invalid value', () => {
+            expect(() => RomanNumber('error')).to.throw(Error, /^invalid value$/);
+        });
+        
+        it('The constructor invoked with "CD1X" should return an exception: invalid value', () => {
+            expect(() => RomanNumber('CD1X')).to.throw(Error, /^invalid value$/);
+        });
     });
 
 });
