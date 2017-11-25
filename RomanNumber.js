@@ -19,6 +19,10 @@ const romanNumber = function RomanNumber(val) {
     if((typeof(val) === 'undefined') || (val === null) || (val === '')) {
         throw new Error('value required');
     }
+
+    if((val < 1) || (val > 3999)) {
+        throw new Error('invalid range');
+    }
 };
 
 /**
