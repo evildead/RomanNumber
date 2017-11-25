@@ -22,21 +22,7 @@ const romanNumber = function RomanNumber(val) {
 
     if(RomanNumber.isValidInt(val)) {
         this.intVal = parseInt(val);
-        if(this.intVal == 1) {
-            this.strVal = 'I';
-        }
-        else if(this.intVal == 2) {
-            this.strVal = 'II';
-        }
-        else if(this.intVal == 3) {
-            this.strVal = 'III';
-        }
-        else if(this.intVal == 4) {
-            this.strVal = 'IV';
-        }
-        else if(this.intVal == 5) {
-            this.strVal = 'V';
-        }
+        this.strVal = RomanNumber.intToRoman(this.intVal);
     }
     else if(RomanNumber.checkOnlyRomanSymbols(val)) {
         
@@ -60,6 +46,81 @@ romanNumber.isValidInt = function isValidInt(val) {
     else {
         return false;
     }
+};
+
+romanNumber.intToRoman = function intToRoman(val) {
+    let intVal = parseInt(val);
+    let finalStr = '';
+
+    let ones = intVal % 10;
+    intVal = parseInt(intVal / 10);
+    let tens = intVal % 10;
+
+    switch(ones) {
+    case 1:
+        finalStr = 'I';
+        break;
+    case 2:
+        finalStr = 'II';
+        break;
+    case 3:
+        finalStr = 'III';
+        break;
+    case 4:
+        finalStr = 'IV';
+        break;
+    case 5:
+        finalStr = 'V';
+        break;
+    case 6:
+        finalStr = 'VI';
+        break;
+    case 7:
+        finalStr = 'VII';
+        break;
+    case 8:
+        finalStr = 'VIII';
+        break;
+    case 9:
+        finalStr = 'IX';
+        break;
+    default:
+        break;
+    }
+
+    switch(tens) {
+    case 1:
+        finalStr = 'X' + finalStr;
+        break;
+    case 2:
+        finalStr = 'XX' + finalStr;
+        break;
+    case 3:
+        finalStr = 'XXX' + finalStr;
+        break;
+    case 4:
+        finalStr = 'XL' + finalStr;
+        break;
+    case 5:
+        finalStr = 'L' + finalStr;
+        break;
+    case 6:
+        finalStr = 'LX' + finalStr;
+        break;
+    case 7:
+        finalStr = 'LXX' + finalStr;
+        break;
+    case 8:
+        finalStr = 'LXXX' + finalStr;
+        break;
+    case 9:
+        finalStr = 'XC' + finalStr;
+        break;
+    default:
+        break;
+    }
+
+    return finalStr;
 };
 
 romanNumber.checkOnlyRomanSymbols = function checkOnlyRomanSymbols(val) {

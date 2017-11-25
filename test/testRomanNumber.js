@@ -98,6 +98,12 @@ describe('RomanNumber', () => {
             romannum.toString().should.equal('V');
             romannum.toInt().should.equal(5);
         });
+
+        it('The arabic number 49 should be equal to the Roman number "XLIX"', () => {
+            let romannum = RomanNumber(49);
+            romannum.toString().should.equal('XLIX');
+            romannum.toInt().should.equal(49);
+        });
     });
 
 });
