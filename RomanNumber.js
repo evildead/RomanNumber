@@ -12,6 +12,9 @@
  *
  */
 const romanNumber = function RomanNumber(val) {
+    if(!new.target) {
+        return new RomanNumber(val);
+    }
 };
 
 module.exports = romanNumber;

@@ -13,6 +13,11 @@ describe('RomanNumber', () => {
             let romanNumber = new RomanNumber(1);
             assert.isObject(romanNumber);
         });
+
+        it('The constructor should be callable without new', () => {
+            let romanNumber = RomanNumber(1);
+            assert.isObject(romanNumber);
+        });
     });
 
 });
