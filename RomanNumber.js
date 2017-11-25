@@ -15,6 +15,10 @@ const romanNumber = function RomanNumber(val) {
     if(!new.target) {
         return new RomanNumber(val);
     }
+
+    if((typeof(val) === 'undefined') || (val === null) || (val === '')) {
+        throw new Error('value required');
+    }
 };
 
 /**

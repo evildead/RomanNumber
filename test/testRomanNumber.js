@@ -28,6 +28,18 @@ describe('RomanNumber', () => {
             let romanNumber = RomanNumber(1);
             assert.isFunction(romanNumber.toString);
         });
+
+        it('The constructor invoked with null should return an exception: value required', () => {
+            expect(() => RomanNumber(null)).to.throw(Error, /^value required$/);
+        });
+        
+        it('The constructor invoked with empty string should return an exception: value required', () => {
+            expect(() => RomanNumber('')).to.throw(Error, /^value required$/);
+        });
+        
+        it('The constructor invoked with no value should return an exception: value required', () => {
+            expect(() => RomanNumber()).to.throw(Error, /^value required$/);
+        });
     });
 
 });
